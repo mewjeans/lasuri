@@ -1,7 +1,6 @@
 # Lasuri Prototype
 - 설명
-    전자식 패드 수리 중개 플랫폼 라수리 입니다.
-
+전자식 패드 수리 중개 플랫폼 라수리 입니다.
 ## 목차
 1. [FeatureDescription](#feature-description)
 2. [Tech stack](#tech-stack)
@@ -35,42 +34,60 @@ App               | flutter, ReactNative
 - notion
 
 # 협업 방법
-1. Branching Strategy
+---
+### 1. Branching Strategy
 PR을 통해 Feature 브랜치들을 master에 머지하고, 최종 배포할 시기가 되면 Admin 관리자가 master 브랜치를 Production 브랜치에 머지하여 배포하는 단순한 구조를 따릅니다.
 
-2. 협업 과정
+### 2. 협업 과정
 로컬에 Clone한 레포에서 Feature 브랜치를 생성하여 작업합니다.
 개발이 끝났다면 다시 한번 원격 레포의 최신 커밋을 받아와줍니다.<br>
+```
+
 // 체크아웃 하기 전, Feature 브랜치에서의 작업 내용을 커밋해야 합니다.
 
-```powershell
 $ git checkout develop
 $ git pull origin develop
+```
+
 추가된 최신 커밋이 있다면 내가 작업한 Feature 브랜치를, 
 새로운 커밋이 추가된 Develop 브랜치의 마지막 커밋으로 Rebase 합니다. (말그대로 base를 바꾼다는 뜻입니다)
 
+```
 $ git checkout Feature/[브랜치명]
 $ git rebase develop
-충돌이 발생했다면, 에디터에서 충돌을 해결한 뒤 아래 명령어를 입력합니다.
-
-$ git add .
-$ git rebase --continue
-이상이 없다면 Feature 브랜치를 push 합니다.
-
-$ git push origin Feature/[브랜치명]
-Github에서 PR을 생성합니다. PR 시 나타나는 템플릿을 채워주세요.
 ```
 
+4. 충돌이 발생했다면, 에디터에서 충돌을 해결한 뒤 아래 명령어를 입력합니다.
+
+```
+$ git add .
+$ git rebase --continue
+```
+
+5. 이상이 없다면 Feature 브랜치를 push 합니다.
+```
+$ git push origin Feature/[브랜치명]
+```
+
+6. Github에서 PR을 생성합니다. PR 시 나타나는 템플릿을 채워주세요.
+
+```
+## Feature Description
+
+- 이런 이런 기능입니다.
+   
 ## To Reviewers
 
 - 이런 이런 점을 유의해주세요
-Review 과정을 거칩니다.
+```
 
-Self Merge 해주세요.
+7. Review 과정을 거칩니다.
 
-Squash Merge되며, Merge된 Feature Branch는 자동 삭제됩니다.
+8. Self Merge 해주세요.
 
-로컬에서 Develop 브랜치로 체크아웃한 뒤 Pull하고, 새로운 Feature 브랜치로 분기하여 다음 작업을 진행해주세요.
+9. Squash Merge되며, Merge된 Feature Branch는 자동 삭제됩니다.
+
+10. 로컬에서 Develop 브랜치로 체크아웃한 뒤 Pull하고, 새로운 Feature 브랜치로 분기하여 다음 작업을 진행해주세요.
 
 
 # 코드 컨벤션
