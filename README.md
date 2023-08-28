@@ -1,6 +1,6 @@
 # Lasuri Prototype
 - 설명
-
+전자식 패드 수리 중개 플랫폼 라수리 입니다.
 ## 목차
 1. [FeatureDescription](#feature-description)
 2. [Tech stack](#tech-stack)
