@@ -1,70 +1,180 @@
-# Getting Started with Create React App
+# Lasuri Prototype
+- 설명
+전자식 패드 수리 중개 플랫폼 라수리 입니다.
+## 목차
+1. [FeatureDescription](#feature-description)
+2. [Tech stack](#tech-stack)
+3. [API 명세](#api-명세)
+4. [협업 방법](#협업-방법)
+5. [To Reviewers](#to-reviewers)
+6. [코드 컨벤션](#코드-컨벤션)
+7. [커밋 메시지 Emoji](#커밋-메시지-emoji)
+8. [Schedule](#-schedule)
+9. [Members](#-members)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Feature Description
 
-## Available Scripts
+- 이런 이런 기능입니다
+### Tech stack
+Component         | Technology
+---               | ---
+Frontend          | React 
+Backend           | Spring Boot 3.+, Java 17+
+Security          | -
+Auth              | -
+Database          | H2 Database, Sqlite
+Persistence       | JPA 
+API Documentation | Swagger ui
+WebServer         | -
+Client Build      | npm, yarn, webpack
+Server Build      | gradle
+App               | flutter, ReactNative
 
-In the project directory, you can run:
+# API 명세
+- notion
 
-### `npm start`
+# 협업 방법
+---
+### 1. Branching Strategy
+PR을 통해 Feature 브랜치들을 master에 머지하고, 최종 배포할 시기가 되면 Admin 관리자가 master 브랜치를 Production 브랜치에 머지하여 배포하는 단순한 구조를 따릅니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. 협업 과정
+로컬에 Clone한 레포에서 Feature 브랜치를 생성하여 작업합니다.
+개발이 끝났다면 다시 한번 원격 레포의 최신 커밋을 받아와줍니다.<br>
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+// 체크아웃 하기 전, Feature 브랜치에서의 작업 내용을 커밋해야 합니다.
 
-### `npm test`
+$ git checkout develop
+$ git pull origin develop
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+추가된 최신 커밋이 있다면 내가 작업한 Feature 브랜치를, 
+새로운 커밋이 추가된 Develop 브랜치의 마지막 커밋으로 Rebase 합니다. (말그대로 base를 바꾼다는 뜻입니다)
 
-### `npm run build`
+```
+$ git checkout Feature/[브랜치명]
+$ git rebase develop
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. 충돌이 발생했다면, 에디터에서 충돌을 해결한 뒤 아래 명령어를 입력합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+$ git add .
+$ git rebase --continue
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. 이상이 없다면 Feature 브랜치를 push 합니다.
+```
+$ git push origin Feature/[브랜치명]
+```
 
-### `npm run eject`
+6. Github에서 PR을 생성합니다. PR 시 나타나는 템플릿을 채워주세요.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+## Feature Description
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 이런 이런 기능입니다.
+   
+## To Reviewers
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 이런 이런 점을 유의해주세요
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+7. Review 과정을 거칩니다.
 
-## Learn More
+8. Self Merge 해주세요.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+9. Squash Merge되며, Merge된 Feature Branch는 자동 삭제됩니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+10. 로컬에서 Develop 브랜치로 체크아웃한 뒤 Pull하고, 새로운 Feature 브랜치로 분기하여 다음 작업을 진행해주세요.
 
-### Code Splitting
+### 5. 커밋 컨벤션
+```
+<태그>: <제목>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- : 뒤에만 띄어쓰기가 있습니다
+- 제목은 한영 혼용이 가능합니다 (가급적 영어로)
+- 태그의 첫글자는 소문자로 작성해주세요
+- 태그는 아래에 적힌 것들만 사용해주세요
+- 검사 예외 조건 (자동 생성, 최초 커밋)
+ - Merge branch*, Merge pull request*, initial*
 
-### Analyzing the Bundle Size
+feat: 새로운 기능 추가, 기능 로직 변경
+fix: 버그 수정
+refactor: 코드 리팩토링 (기능 변화 X)
+style: 코드 포맷팅, 코드 변경이 없는 경우
+chore: 빌드 업무 수정, 패키지 매니저 수정
+docs: 문서 수정, 주석
+test : Test 관련한 코드의 추가, 수정
+! : 급한 변경 사항인 경우에 추가 (접두사, () 뒤 / 콜론 이전)
+() : 추가 요약 정보가 필요할 경우 (접두사 뒤 / !, 콜론 이전)
+BREAKING CHANGE : 급한 변경 footer에 추가
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# 코드 컨벤션
+구분                | Javascript, Java, Dart, flutter
+---                 | ---
+PascalCase          | 클래스, Exception
+camelCase           | 변수, 함수, 메소드
+UPPER_CASE          | 상수변수
+Boolean Type        | is_prefix(ex : is_human = True 사람인지 아닌지)
+최대 tab depth의 제한  | 최대 depth는 4로 제한
+주석 규칙            |  //로 적고, 그 이상은 /** */로 주석을 작성
 
-### Making a Progressive Web App
+# 커밋 메시지 Emoji
+이모지(Emoji)	 |   Description
+---            | ---
+🎨             | 코드의 형식 / 구조를 개선 할 때
+📰             | 새 파일을 만들 때
+📝             | 사소한 코드 또는 언어를 변경할 때
+🐎             | 성능을 향상시킬 때
+📚             | 문서를 쓸 때
+🐛             |	버그 reporting할 때, @FIXME 주석 태그 삽입
+🚑             |	버그를 고칠 때
+🐧             |	리눅스에서 무언가를 고칠 때
+🍎             |	Mac OS에서 무언가를 고칠 때
+🏁             |	Windows에서 무언가를 고칠 때
+🔥             |	코드 또는 파일 제거할 때 , @CHANGED주석 태그와 함께
+🚜             |	파일 구조를 변경할 때 . 🎨과 함께 사용
+🔨             |	코드를 리팩토링 할 때
+☔️             |	테스트를 추가 할 때
+🔬             |	코드 범위를 추가 할 때
+💚             |	CI 빌드를 고칠 때
+🔒             |	보안을 다룰 때
+⬆️             |	종속성을 업그레이드 할 때
+⬇️             |	종속성을 다운 그레이드 할 때
+⏩             |	이전 버전 / 지점에서 기능을 전달할 때
+⏪             |	최신 버전 / 지점에서 기능을 백 포트 할 때
+👕             |	linter / strict / deprecation 경고를 제거 할 때
+💄             |	UI / style 개선시
+♿️             |	접근성을 향상시킬 때
+🚧             |	WIP (진행중인 작업)에 커밋, @REVIEW주석 태그와 함께 사용
+💎             |	New Release
+🔖             |	버전 태그
+🎉             |	Initial Commit
+🔈             |	로깅을 추가 할 때
+🔇             |	로깅을 줄일 때
+✨             |	새로운 기능을 소개 할 때
+⚡️             |	도입 할 때 이전 버전과 호환되지 않는 특징, @CHANGED주석 태그 사용
+💡             |	새로운 아이디어, @IDEA주석 태그
+🚀             |	배포 / 개발 작업 과 관련된 모든 것
+🐘             |	PostgreSQL 데이터베이스 별 (마이그레이션, 스크립트, 확장 등)
+🐬             |	MySQL 데이터베이스 특정 (마이그레이션, 스크립트, 확장 등)
+🍃             |	MongoDB 데이터베이스 특정 (마이그레이션, 스크립트, 확장 등)
+🏦             |	일반 데이터베이스 별 (마이그레이션, 스크립트, 확장명 등)
+🐳             |	도커 구성
+🤝             |	파일을 병합 할 때
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📋 Schedule
+```
+📌 
+> **1주일?**  
 
-### Advanced Configuration
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🏃🏻 Members
+| [<a href="https://github.com/Kateiscoding"><img src="https://avatars.githubusercontent.com/u/120708446?v=4" width="90"></a>]() | [<a href="https://github.com/seung9526"><img src="https://avatars.githubusercontent.com/u/38849788?v=4" width="90"></a>]() | [<a href="https://github.com/Secludor"><img src="https://avatars.githubusercontent.com/u/129930239?v=4" width="90"></a>]() |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | 
+|              [김승현](https://github.com/Kateiscoding)              |             [성경민](https://github.com/seung9526)             |              [오주영](https://github.com/Secludor)              | 
+<br/>
