@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import styled from 'styled-components';
-
-
-function LoginPage() {
-    return (
-        <LoginPageContainer>
-            <p>LoginPage</p>
-=======
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -77,17 +67,12 @@ function LoginPage() {
                     <button type='button' onClick={onClickLogin}>Login</button>
                 </div>
             </div>
->>>>>>> c02c3fb601353bb7fb2558c39a3f8fa925006f04
         </LoginPageContainer>
     );
 }
 
 const LoginPageContainer = styled.main`
-<<<<<<< HEAD
-background-color: white;
-=======
   background-color: white;
->>>>>>> c02c3fb601353bb7fb2558c39a3f8fa925006f04
 `;
 
 export default LoginPage;
