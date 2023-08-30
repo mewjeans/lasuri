@@ -35,7 +35,7 @@ export default class Colors {
 
     static blue300 = '#B4CEED';
 
-    static blue400 = '#7DA8DB';
+    static blue400 = '#2EAAFF';
 
     static blue500 = '#4786D0';
 
