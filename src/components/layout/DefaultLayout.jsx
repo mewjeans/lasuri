@@ -14,7 +14,8 @@ function DefaultLayout(props) {
 }
 
 const Layout = styled.main`
-    width: 100%;
+    width:  120rem;
+    height: 50rem;
     margin: 0 auto;
 `;
 
