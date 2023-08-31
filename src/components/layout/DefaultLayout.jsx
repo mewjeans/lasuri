@@ -15,7 +15,7 @@ function DefaultLayout(props) {
 
 const Layout = styled.main`
     width:  120rem;
-    height: 50rem;
+    height: 120rem;
     margin: 0 auto;
 `;
 
