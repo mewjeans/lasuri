@@ -62,7 +62,6 @@ align-items: center;
         justify-content: space-between;
         align-items: center;
         
-        // 로고 이미지
         > div:nth-child(1) {
             display: flex;
             gap: 3rem;
@@ -125,7 +124,7 @@ const Navbar= styled.div`
 
     > div {
         display: flex;
-        gap: 3rem;
+        gap: 5rem;
         align-items: center;
 
         > p {

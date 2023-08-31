@@ -25,6 +25,7 @@
         "no-trailing-spaces": "off",
         "react/prop-types": "off",
         "no-undef": "warn",
+        "no-plusplus": "off",
         "react/destructuring-assignment": [0,"always"],
         "react/function-component-definition": "off"
     }
