@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { KakaoLogin } from 'react-kakao-login';
 import Fonts from '../../../styles/fonts';
 import Colors from '../../../styles/colors';
 import Paths from '../../../constant/path';
 import mainLogo from '../../../assets/main-logo.png';
 import SearchBar from '../../shared/SearchBar';
+
+const REST_API_BASE_URL = 'https://your-api-base-url.com';  // 실제 API의 기본 URL로 변경
+const LOGIN_ENDPOINT = '/api/user/login';  // 실제 로그인 엔드포인트로 변
 
 function LoginPage() {
     const [inputId, setInputId] = useState('');
@@ -28,14 +30,12 @@ function LoginPage() {
             email: inputId,
             password: inputPw
         };
-        console.log('로그인 버튼 클릭');
-
-        axios.post('/login', userData)
+    
+        axios.post(REST_API_BASE_URL + LOGIN_ENDPOINT, userData)
             .then(response => {
                 const responseData = response.data;
-                console.log(responseData); // 응답 데이터 확인
-
-                if (responseData && responseData.email) {
+    
+                if (response.status === 200) {
                     console.log('로그인 성공');
                     // 로그인 성공 시 동작
                 } else {
@@ -48,6 +48,8 @@ function LoginPage() {
                 // 에러 처리
             });
     };
+    
+
 
     // 페이지 렌더링 후 가장 처음으로 호출
     useEffect(() => {
@@ -98,7 +100,11 @@ function LoginPage() {
                 </ButtonContainer>
                 <ButtonContainer>
                 <KakaoLoginButton type='button' onClick={onClickKakaoLogin}>카카오 로그인</KakaoLoginButton>
-            </ButtonContainer>
+                </ButtonContainer>
+                <ButtonContainer>
+                    <div>아직 계정이 없으신가요?</div>
+                <RegisterButton type='button' onClick={onClickLogin}>회원가입</RegisterButton>
+                </ButtonContainer>
             
             {/* <div>
                 <p>Login</p>
@@ -148,6 +154,12 @@ const StyledInput = styled.input`
 const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
+    gap: 2rem;
+
+    > div {
+        display: flex;
+        align-items: center;
+    }
 `;
 
 const LoginButton = styled.button`
@@ -166,6 +178,20 @@ const LoginButton = styled.button`
 
 `;
 
+const RegisterButton = styled.button`
+    padding: 1rem 2rem;
+    font-size: 16px;
+    background-color: ${Colors.blue200};
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 5rem;
+    display: flex;
+`;
 
 const KakaoLoginButton = styled.button`
     padding: 1rem 2rem;
