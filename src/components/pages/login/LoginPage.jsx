@@ -103,26 +103,11 @@ function LoginPage() {
                 </ButtonContainer>
                 <ButtonContainer>
                     <div>아직 계정이 없으신가요?</div>
-                <RegisterButton type='button' onClick={onClickLogin}>회원가입</RegisterButton>
+                <Link to={Paths.signup}>
+                    <RegisterButton type='button'>
+                    회원가입</RegisterButton>
+                </Link>
                 </ButtonContainer>
-            
-            {/* <div>
-                <p>Login</p>
-                <div>
-                    // {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    {/* <label htmlFor='input_id'>ID: </label>
-                    <input type='text' name='input_id' value={inputId} onChange={handleInputId} />
-                </div>
-                <div>
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    {/* <label htmlFor='input_pw'>PW: </label>
-                    <input type='password' name='input_pw' value={inputPw} onChange={handleInputPw} />
-                </div> */} 
-                {/* <div>
-                    <button type='button' onClick={onClickLogin}>Login</button>
-                </div>
-            </div> */} 
-
             </LoginForm>
         </LoginPageContainer>
     );

@@ -6,18 +6,169 @@ import Fonts from '../../../styles/fonts';
 import Colors from '../../../styles/colors';
 import Paths from '../../../constant/path';
 import mainLogo from '../../../assets/main-logo.png';
-import SearchBar from '../../shared/SearchBar';
 
 function SignupPage() {
+
+    const [inputId, setInputId] = useState('');
+    const [inputPw, setInputPw] = useState('');
+    const [inputName, setInputName] = useState('');
+
+    // input data의 변화가 있을 때 value 값을 변경해서 useState 해줌
+    const handleInputId = (e) => {
+        setInputId(e.target.value);
+    };
+
+    const handleInputPw = (e) => {
+        setInputPw(e.target.value);
+    };
+
+    const handleInputName = (e) => {
+        setInputName(e.target.value);
+    };
+
     return (
-        <SignupContainer>
-            <p>SignupContainer</p>
-        </SignupContainer>
+        <SignupPageContainer>
+        <SignupForm>
+            <div>
+                <img src={mainLogo} alt="mainlogo" />
+            </div>
+            <InputContainer>
+                <StyledInput
+                    type='text'
+                    name='input_id'
+                    value={inputId}
+                    onChange={handleInputId}
+                    placeholder='이메일'
+                />
+            </InputContainer>
+            <InputContainer>
+                <StyledInput
+                    type='text'
+                    name='input_name'
+                    value={inputName}
+                    onChange={handleInputName}
+                    placeholder='닉네임'
+                />
+            </InputContainer>
+            <InputContainer>
+                <StyledInput
+                    type='password'
+                    name='input_pw'
+                    value={inputPw}
+                    onChange={handleInputPw}
+                    placeholder='비밀번호'
+                />
+            </InputContainer>
+            <InputContainer>
+                <StyledInput
+                    type='password'
+                    name='input_pw'
+                    value={inputPw}
+                    onChange={handleInputPw}
+                    placeholder='비밀번호 확인'
+                />
+            </InputContainer>
+            <ButtonContainer>
+                <SignupButton type='button'>회원가입</SignupButton>
+            </ButtonContainer>
+
+ 
+        </SignupForm>
+    </SignupPageContainer>
     );
 }
 
-const SignupContainer = styled.div`
-background-color: white;
+
+const InputContainer = styled.div`
+    margin-bottom: 0rem;
+`;
+
+
+const StyledInput = styled.input`
+    width: 100%;
+    height: 4rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    width: 40rem;
+    height: 5rem;
+    padding: 1rem 2rem;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    border-radius: 4rem;
+    background: #FFF;
+`;
+
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    > div {
+        display: flex;
+        align-items: center;
+    }
+`;
+
+
+const SignupButton = styled.button`
+    padding: 1rem 2rem;
+    font-size: 16px;
+    background-color: ${Colors.blue200};
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 40rem;
+    height: 5rem;
+    display: flex;
+`;
+
+
+
+
+const SignupForm = styled.div`
+    width: 40rem;
+    background-color: #FFF;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+`;
+
+const SignupPageContainer = styled.main`
+    padding-top: 4rem;
+
+    > div:nth-child(1) {
+        gap: 2rem;
+        width: 120rem;
+        height: 80rem;
+        border-radius: 3rem;
+        background: #D1EFF9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        > div:nth-child(1) {
+            display: flex;
+            margin-bottom: 3rem;
+
+            > img {
+                width: 12rem;
+                height: 2.5rem;
+            }
+        }
+
+        > div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+    }
 `;
 
 export default SignupPage;

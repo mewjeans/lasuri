@@ -9,6 +9,7 @@ import Faq from './pages/faq';
 import Login from './pages/login';
 import Mypage from './pages/mypage';
 import Service from './pages/service';
+import SignUp from './pages/signup';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path={Paths.login} element={<Login />} />
           <Route path={Paths.mypage} element={<Mypage />} />
           <Route path={Paths.service} element={<Service />} />
+          <Route path={Paths.signup} element={<SignUp />} />
       </Routes>
     </Router>
   );
