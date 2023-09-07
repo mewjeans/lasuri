@@ -11,5 +11,7 @@ export default class Paths {
     static service = '/service';
 
     static mypage = '/mypage';
+
+    static signup = '/signup';
     
 }
