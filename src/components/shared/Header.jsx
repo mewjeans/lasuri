@@ -79,7 +79,7 @@ align-items: center;
             
             > div {
                 // 검색창
-                width: 21rem;
+                width: 27rem;
                 height: 4rem;
                 border: 1px solid gray;
                 border-radius: 7rem;
