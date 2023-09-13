@@ -13,5 +13,9 @@ export default class Paths {
     static mypage = '/mypage';
 
     static signup = '/signup';
+
+    static notice = '/faq/notice';
+
+    static createpost = '/faq/createpost';
     
 }
